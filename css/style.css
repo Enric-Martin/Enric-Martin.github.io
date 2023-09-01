@@ -37,6 +37,13 @@ body {
   background: transparent;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: 0.3s;
+}
+
+.sticky {
+  background: var(--bg-color);
 }
 
 .logo {
@@ -68,29 +75,40 @@ body {
 section {
   min-height: 100vh;
   padding: 10rem 9% 2rem;
-  background: url();
+  background: transparent;
 }
 
 .home {
   display: flex;
   align-items: center;
   padding: 0 9%;
-  background: var(--bg-color);
+  background: url(../images/background-5.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -5;
 }
 
 .home-content {
   max-width: 60rem;
+  z-index: +1;
 }
 
 .home-content h1 {
   font-size: 5.6rem;
   font-weight: 700;
   line-height: 1.3;
+  z-index: +1;
+}
+
+.home-content h1 span {
+  color: var(--text-color);
+  z-index: +1;
 }
 
 .home-content .text-animated {
   position: relative;
   width: 32.8rem;
+  z-index: +1;
 }
 
 .home-content .text-animated h3 {
@@ -98,11 +116,13 @@ section {
   font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 0.7px var(--main-color);
+  z-index: +1;
 }
 
 .home-content p {
   font-size: 1.6rem;
   margin: 2rem 0 4rem;
+  z-index: +1;
 }
 
 .btn-box {
@@ -111,6 +131,7 @@ section {
   justify-content: space-between;
   width: 34.5rem;
   height: 5rem;
+  z-index: +1;
 }
 
 .btn-box .btn {
@@ -211,21 +232,22 @@ section {
 }
 
 /* In case of image use: */
-/*
+
 .home-imgHover {
   position: absolute;
   top: 0;
   right: 0;
-  width: 45%;
+  width: 46%;
   height: 100%;
   background: transparent;
   transition: 3s;
+  z-index: 0;
 }
 
 .home-imgHover:hover {
   background: var(--bg-color);
-  opacity: 0.8;
-} */
+  opacity: 0.3;
+}
 
 /* About Section */
 
@@ -627,4 +649,56 @@ span {
 
 .footer-iconTop a:hover i {
   color: var(--main-color);
+}
+
+/* Media queries */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    padding: 2rem 4%;
+  }
+
+  section {
+    padding: 10rem 4% 2rem;
+  }
+
+  .home {
+    padding: 0 4%;
+  }
+
+  .footer {
+    padding: 2rem 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    background: var(--bg-color);
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 4%;
+    background: var(--bg-color);
+    box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar a {
+    display: block;
+    font-size: 2rem;
+    margin: 3rem 0;
+  }
 }
