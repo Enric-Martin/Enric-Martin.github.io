@@ -47,9 +47,14 @@ body {
 }
 
 .logo {
-  font-size: 2rem;
+  position: relative;
+  font-size: 2.5rem;
   color: var(--text-color);
   font-weight: 600;
+}
+
+.navbar {
+  position: relative;
 }
 
 .navbar a {
@@ -66,6 +71,7 @@ body {
 }
 
 #menu-icon {
+  position: relative;
   font-size: 3.6rem;
   color: var(--text-color);
   cursor: pointer;
@@ -94,6 +100,8 @@ section {
 }
 
 .home-content h1 {
+  position: relative;
+  display: inline-block;
   font-size: 5.6rem;
   font-weight: 700;
   line-height: 1.3;
@@ -116,10 +124,36 @@ section {
   font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 0.7px var(--main-color);
+  background-image: linear-gradient(var(--main-color), var(--main-color));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-position: -33rem 0;
   z-index: +1;
 }
 
+.home.show-animate .home-content .text-animated h3 {
+  animation: homeBgText 6s linear infinite;
+  animation-delay: 2s;
+}
+
+.home-content .text-animated h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-right: 2px solid var(--main-color);
+  z-index: -1;
+}
+
+.home.show-animate .home-content .text-animated h3::before {
+  animation: homeCursorText 6s linear infinite;
+  animation-delay: 2s;
+}
+
 .home-content p {
+  position: relative;
   font-size: 1.6rem;
   margin: 2rem 0 4rem;
   z-index: +1;
@@ -262,6 +296,7 @@ section {
 }
 
 .heading {
+  position: relative;
   font-size: 5rem;
   margin-bottom: 3rem;
   text-align: center;
@@ -299,6 +334,7 @@ span {
   border-bottom: 0.2rem solid var(--second-bg-color);
   border-left: 0.2rem solid var(--main-color);
   border-right: 0.2rem solid var(--main-color);
+  animation: aboutSpinner 8s linear infinite;
 }
 
 .about-content {
@@ -306,10 +342,13 @@ span {
 }
 
 .about-content h3 {
+  position: relative;
+  display: inline-block;
   font-size: 2.6rem;
 }
 
 .about-content p {
+  position: relative;
   font-size: 1.6rem;
   margin: 2rem 0 3rem;
 }
@@ -330,7 +369,7 @@ span {
   align-items: center;
   flex-direction: column;
   min-height: auto;
-  padding-bottom: 5rem;
+  padding-bottom: 10rem;
 }
 
 .education .education-row {
@@ -344,11 +383,14 @@ span {
 }
 
 .education-column .title {
+  position: relative;
+  display: inline-block;
   font-size: 2.5rem;
   margin: 0 0 1.5rem 2rem;
 }
 
 .education-column .education-box {
+  position: relative;
   border-left: 0.2rem solid var(--main-color);
 }
 
@@ -415,8 +457,14 @@ span {
 /* Skills Section */
 .skills {
   min-height: auto;
-  padding-bottom: 7rem;
+  padding-bottom: 10rem;
   background: var(--second-bg-color);
+}
+
+.skills h2 {
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .skills .skills-row {
@@ -430,8 +478,14 @@ span {
 }
 
 .skills-column .title {
+  position: relative;
+  display: inline-block;
   font-size: 2.5rem;
   margin: 0 0 1.5rem;
+}
+
+.skills-column .skills-box {
+  position: relative;
 }
 
 .skills-box .skills-content {
@@ -525,7 +579,13 @@ span {
 /* Contact section */
 .contact {
   min-height: auto;
-  padding-bottom: 7rem;
+  padding-bottom: 15rem;
+}
+
+.contact h2 {
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .contact form {
@@ -604,8 +664,14 @@ span {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 2rem 9%;
+  padding: 5rem 9%;
   background: var(--second-bg-color);
+  padding-bottom: 50px;
+}
+
+.footer-text,
+.footer-iconTop {
+  position: relative;
 }
 
 .footer-text p {
@@ -651,7 +717,54 @@ span {
   color: var(--main-color);
 }
 
-/* Media queries */
+/* Animation reload and scroll */
+.animate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  z-index: 98;
+}
+
+.animate.home-img {
+  width: 50%;
+}
+
+.logo .animate,
+.navbar .animate,
+#menu-icon .animate,
+.home.show-animate .animate {
+  animation: showRight 1s ease forwards;
+  animation-delay: calc(0.3s * var(--i));
+}
+
+.animate.scroll {
+  transition: 1s ease;
+  transition-delay: calc(0.3s / var(--i));
+  animation: none;
+}
+
+section:nth-child(odd) .animate.scroll,
+.footer .animate.scroll {
+  background: var(--second-bg-color);
+}
+
+.education .education-box .animate.scroll {
+  width: 105%;
+}
+
+.about.show-animate .animate.scroll,
+.education.show-animate .animate.scroll,
+.skills.show-animate .animate.scroll,
+.contact.show-animate .animate.scroll,
+.footer.show-animate .animate.scroll {
+  transition-delay: calc(0.3s * var(--i));
+  width: 0;
+}
+
+/* Breack Points */
 
 @media (max-width: 1200px) {
   html {
@@ -677,6 +790,12 @@ span {
   }
 }
 
+@media (max-width: 850px) {
+  .animate.home-img {
+    width: 55%;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     background: var(--bg-color);
@@ -689,16 +808,163 @@ span {
   .navbar {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -100%;
     width: 100%;
     padding: 1rem 4%;
-    background: var(--bg-color);
+    background: var(--main-color);
     box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: 0.25s ease;
+    transition-delay: 0.25s;
+  }
+
+  .navbar.active {
+    transition-delay: 0s;
+    left: 0;
+  }
+
+  .navbar .active-nav {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    z-index: -1;
+    transition: 0.25s ease;
+    transition-delay: 0s;
+  }
+
+  .navbar.active .active-nav {
+    transition-delay: 0.25s;
+    left: 0;
   }
 
   .navbar a {
     display: block;
     font-size: 2rem;
     margin: 3rem 0;
+    transform: translateX(-20rem);
+    transition: 0.25s ease;
+    transition-delay: 0s;
+  }
+
+  .navbar.active a {
+    transform: translateX(0);
+    transition-delay: 0.25s;
+  }
+
+  .home-imgHover {
+    pointer-events: none;
+    background: var(--bg-color);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 520px) {
+  html {
+    font-size: 50%;
+  }
+
+  .home-content h1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-sci {
+    width: 160px;
+  }
+
+  .home-sci a {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 462px) {
+  .home-content h1 {
+    font-size: 5.2rem;
+  }
+
+  .education {
+    padding: 10rem;
+  }
+
+  .contact form .input-box .input-field {
+    width: 100%;
+  }
+
+  /* This puts the elements of the foter in column
+  .footer {
+    flex-direction: column-reverse;
+  } 
+  
+  .footer p {
+    margin-top: 2rem;
+    text-aling: center;
+  } */
+}
+
+@media (max-width: 375px) {
+  .home {
+    justify-content: center;
+  }
+
+  .home-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-content h1 {
+    font-size: 5rem;
+  }
+}
+
+/* Key frames animation */
+@keyframes homeBgText {
+  0%,
+  10%,
+  100% {
+    background-position: -33rem 0;
+  }
+
+  65%,
+  85% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes homeCursorText {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  65%,
+  78%,
+  85% {
+    width: 100%;
+    opacity: 1;
+  }
+
+  75%,
+  81% {
+    opacity: 0;
+  }
+}
+
+@keyframes aboutSpinner {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes showRight {
+  100% {
+    width: 0;
   }
 }
