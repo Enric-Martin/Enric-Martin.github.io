@@ -867,6 +867,10 @@ section:nth-child(odd) .animate.scroll,
     font-size: 50%;
   }
 
+  .home {
+    background: var(--bg-color);
+  }
+
   .home-content h1 {
     display: flex;
     flex-direction: column;
