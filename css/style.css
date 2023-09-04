@@ -159,6 +159,10 @@ section {
   z-index: +1;
 }
 
+.btn {
+  cursor: pointer;
+}
+
 .btn-box {
   position: relative;
   display: flex;
