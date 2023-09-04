@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST["message"];
 
     // Set recipient email address
-    $to = "enricmartin@gmail.com";
+    $to = "enricmartin87@gmail.com";
 
     // Set email subject and headers
     $subject = "Contact Form Submission from $name";
