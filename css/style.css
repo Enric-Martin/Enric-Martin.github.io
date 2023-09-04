@@ -791,6 +791,7 @@ section:nth-child(odd) .animate.scroll,
 
   .footer {
     padding: 2rem 4%;
+    padding-bottom: 50px;
   }
 }
 
